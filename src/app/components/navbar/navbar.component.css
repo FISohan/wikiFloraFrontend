@@ -1,0 +1,53 @@
+nav {
+    height: 50px;
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    color: aliceblue;
+}
+input[type="text"]:disabled {
+    color: #000000;
+  }
+.title {
+    margin-left: 10px;
+
+}
+
+.action_container {
+    margin-right: 20px;
+}
+
+.btn {
+    border: none;
+    font-size: 1rem;
+}
+
+.search_box {
+    display: flex;
+    height: 40px;
+    color: aliceblue;
+}
+
+.search_input {
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    width: 70px;
+    background: none;
+    color: aliceblue;
+    margin-left: 5px;
+}
+
+.search_btn {
+    background: none;
+    color: aliceblue;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(255, 255, 255);
+    opacity: 1; /* Firefox */
+  }

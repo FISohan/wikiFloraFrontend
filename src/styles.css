@@ -1,1 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Milonga&family=Raleway:ital,wght@0,700;0,900;1,200&display=swap');
+body,*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'Akhand' , 'Milonga';
+    
+}
+
+html{
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body{
+    background-color: black;
+}
+
+@font-face {
+    font-family:Akhand;
+    src: url("/assets/fonts/AkhandBengali-BLack.otf") format("truetype");
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

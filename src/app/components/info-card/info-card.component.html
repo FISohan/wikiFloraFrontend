@@ -1,0 +1,15 @@
+<div class="card_body" routerLink="details/{{floraInfo.banglaName}}">
+    <img [src]="'http://localhost:5277/photo/7b2b792c-0173-4860-b1e8-b02dae4587d7_OIG%20(1).jpg'" alt="" class="card_img">
+    <h1 class="name">
+        {{floraInfo.banglaName}} or {{floraInfo.othersName}}
+    </h1>
+    <h4 class="scientific_name">
+        <i>
+            <span> {{floraInfo.scientificName.genus | capitalize }} </span>
+            <span> {{floraInfo.scientificName.specificEpithet}} </span>
+        </i>
+    </h4>
+    <p class="description">
+        {{floraInfo.description | summery:400}} 
+    </p>
+</div>

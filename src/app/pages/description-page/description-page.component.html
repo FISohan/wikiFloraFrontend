@@ -1,0 +1,37 @@
+<main>
+  <div class="main_container">
+    <div class="feature_image">
+      <img src="/assets/images/header_image.png" alt="" />
+    </div>
+    <div class="name_group">
+      <div class="grp1">
+        <h1>প্রধান নাম : {{flora.banglaName}} </h1>
+        <h3>অন্যান্য নাম : {{ flora.othersName }}</h3>
+        <h3 style="font-style: italic">
+          বৈজ্ঞানিক নাম : {{ flora.scientificName.genus | capitalize }}
+          {{ flora.scientificName.specificEpithet }}
+        </h3>
+        <h3>Contributer : {{flora.contributer}}</h3>
+      </div>
+      <br />
+      <div class="classification_section">
+        <h3>শ্রেণিবিন্যাস:</h3>
+        <ul>
+          <li>Kingdom : {{ flora.hierarchy.kingdom }}</li>
+          <li>Family : {{ flora.hierarchy.family }}</li>
+          <li>Order : {{ flora.hierarchy.order }}</li>
+          <li>Genus : {{ flora.hierarchy.genus }}</li>
+          <li>Species : {{ flora.hierarchy.species }}</li>
+          <li>Binomial Name : {{ flora.hierarchy.bionomialName }}</li>
+        </ul>
+      </div>
+    </div>
+    <br />
+    <div class="description">
+      <h3>বর্ননা:</h3>
+      <p>
+        {{ flora.description }}
+      </p>
+    </div>
+  </div>
+</main>

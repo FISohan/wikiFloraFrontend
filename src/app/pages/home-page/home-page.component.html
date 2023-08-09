@@ -1,0 +1,47 @@
+<app-header></app-header>
+<br />
+<br />
+<br />
+<!-- <div class="category_box">
+    <button (click)="onClickCategory(i)" style="border-bottom-color:{{category.active ? '#fffb28' : 'transparent'}}"
+        *ngFor="let category of categories;let i = index"> {{category.name}} </button>
+</div> -->
+<br />
+<section class="data_table" id="data_table_section">
+  <app-info-card
+    *ngFor="let flora of page?.data"
+    [floraInfo]="flora"
+  ></app-info-card>
+</section>
+
+<div class="pagination">
+    <a href="#data_table_section">
+  <button
+    class="prev pagination_input"
+    (click)="prevPage()"
+    [disabled]="isDisablePrevButton"
+    
+  >
+    <i class="material-icons">arrow_back_ios</i>
+  </button>
+    </a>
+  <input
+    type="number"
+    [max]="page?.maxPageIndex"
+    class="page_index pagination_input"
+    [value]="page?.currentPageIndex"
+  />
+  <span style="color: white; font-family: 'Courier New', Courier, monospace"
+    >of {{ page?.maxPageIndex }}</span
+  >
+  <a href="#data_table_section">
+  <button
+    class="nxt pagination_input"
+    (click)="nextPage()"
+    [disabled]="isDisableNextButton"
+  >
+    <i class="material-icons"> arrow_forward_ios </i>
+  </button>
+</a>
+</div>
+
