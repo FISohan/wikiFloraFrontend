@@ -1,0 +1,18 @@
+
+.feature_image>img {
+    width: 100%;
+}
+
+.feature_image{
+    position: relative;
+}
+
+.feature_image > button {
+    position: absolute;
+    font-size: 30px;
+    background: none;
+    outline: none;
+    border: none;
+    right: 2%;
+    top: 1%;
+}

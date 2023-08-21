@@ -14,9 +14,17 @@ export class AppComponent implements OnInit{
     
   }
 ngOnInit(): void {
+}
+auth(){
   this.oidcSecurityService.authorize();
 }
-
+logOut(){
+  this.oidcSecurityService.logoff().subscribe(d => console.log(d)
+  );  
+}
+getToken(){
+   this.oidcSecurityService.isAuthenticated().subscribe(d => console.log(d))
+}
 
   title = 'wikiFlora';
   

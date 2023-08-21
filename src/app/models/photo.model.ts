@@ -4,6 +4,4 @@ export interface Photo {
     floraId:      string;
     isCoverPhoto: boolean;
     path:         string;
-    reference:    string;
-    credit:       string;
 }

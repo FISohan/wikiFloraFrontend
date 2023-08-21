@@ -13,6 +13,8 @@ import { SummaryPipe } from './pipe/summery.pipe';
 import { CapitalizePipe } from './pipe/capitalize.pipe';
 import { AddFloraComponent } from './pages/add-flora/add-flora.component';
 import { AuthConfigModule } from './auth/auth-config.module';
+import { PhotoUploadPreviewComponent } from './components/photo-upload-preview/photo-upload-preview.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,12 +27,15 @@ import { AuthConfigModule } from './auth/auth-config.module';
     SummaryPipe,
     CapitalizePipe,
     AddFloraComponent,
+    PhotoUploadPreviewComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     AuthConfigModule,
+    ReactiveFormsModule
+    
   ],
   providers: [
   ],
