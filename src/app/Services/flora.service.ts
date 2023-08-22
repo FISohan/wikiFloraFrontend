@@ -19,4 +19,12 @@ export class FloraService {
   getFloraByName(name?:string):Observable<Flora>{
     return this.http.get<Flora>(environment.baseUrl + `Flora/Get/${name}`);
   }
+  postFlora(flora:any):Observable<Flora>{
+    console.log(flora);
+    
+    return this.http.post<Flora>(environment.baseUrl + "flora",flora,{headers:{
+      "Content-Type":"application/json; charset=UTF-8"
+
+    }});
+  }
 }

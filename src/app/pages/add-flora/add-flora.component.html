@@ -39,6 +39,7 @@
       cols="30"
       rows="10"
       style="width: 90%; height: 400px"
+      formControlName="description"
     ></textarea>
     <div class="photoGroup">
       <app-photo-upload-preview *ngFor="let photo of photos;let indexOfEl = index"  [photoSrc]="photo.path" (remove)="removeAt(indexOfEl)">
@@ -51,12 +52,12 @@
       id=""
       cols="30"
       rows="10"
-      formControlName="description"
+      formControlName="reference"
       style="width: 90%; height: 100px"
     ></textarea>
+    <button (click)="submit()">Submit</button>
   </form>
-  <button (click)="submit()" >Submit</button>
 </main>
 <br />
-<br />
+<br /> 
 
