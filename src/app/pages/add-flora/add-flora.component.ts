@@ -56,9 +56,9 @@ export class AddFloraComponent implements OnInit {
       });
     });
     this.floraService.postFlora(JSON.stringify(this.floraForm.value)).subscribe(res => {
-      console.log(res);
+      this.floraForm.reset();
+      this.photos = [];
     })
-    console.log(this.floraForm.value);
   }
 
   async uploadPhotos(event: any) {
