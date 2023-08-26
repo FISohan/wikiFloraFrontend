@@ -20,26 +20,25 @@ export class FloraService {
     pageSize: number,
     orederByGenus: boolean = false
   ): Observable<Page> {
-    let token = '';
-    this.oidcSecurityService.checkAuth().subscribe((l: LoginResponse) => {
-      token = l.accessToken;
-    });
-    console.log(token);
     return this.http.get<Page>(
       environment.baseUrl +
         `Flora/Get/pageNumber=${pageNumber}&pageSize=${pageSize}&orderByGenus=${orederByGenus}`,
-      { headers: { Authorization: `Bearer ${token}` } }
     );
   }
   getFloraByName(name?: string): Observable<Flora> {
     return this.http.get<Flora>(environment.baseUrl + `Flora/Get/${name}`);
   }
   postFlora(flora: any): Observable<Flora> {
-    console.log(flora);
-
+    let token;
+    this.oidcSecurityService.checkAuth().subscribe((l: LoginResponse) => {
+      token = l.accessToken;
+      console.log(l);
+      
+    });
     return this.http.post<Flora>(environment.baseUrl + 'flora', flora, {
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
+        Authorization: `Bearer ${token}`
       },
     });
   }

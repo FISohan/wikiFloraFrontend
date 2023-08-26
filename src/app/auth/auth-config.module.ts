@@ -21,6 +21,7 @@ import { environment } from 'src/environments/environment';
           }
       })],
     exports: [AuthModule],
-   // providers:[{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}]
+    providers:[]
 })
+
 export class AuthConfigModule {}
