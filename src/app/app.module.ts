@@ -16,6 +16,7 @@ import { AuthConfigModule } from './auth/auth-config.module';
 import { PhotoUploadPreviewComponent } from './components/photo-upload-preview/photo-upload-preview.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     CapitalizePipe,
     AddFloraComponent,
     PhotoUploadPreviewComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

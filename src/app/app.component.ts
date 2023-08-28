@@ -13,10 +13,7 @@ export class AppComponent implements OnInit {
    */
   constructor(private oidcSecurityService: OidcSecurityService) {}
   ngOnInit(): void {
-    this.oidcSecurityService.checkAuth().subscribe((res:LoginResponse)=>{
-      console.log(res);
-      
-    })
+
   }
   authorize() {
     this.oidcSecurityService.authorize();

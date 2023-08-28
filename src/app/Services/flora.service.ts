@@ -36,17 +36,6 @@ export class FloraService {
     return this.http.get<Flora>(environment.baseUrl + `Flora/Get/${name}`);
   }
   postFlora(flora: any): Observable<Flora> {
-    let token;
-    this.oidcSecurityService.checkAuth().subscribe((l: LoginResponse) => {
-      token = l.accessToken;
-      console.log(l);
-      
-    });
-    return this.http.post<Flora>(environment.baseUrl + 'flora', flora, {
-      headers: {
-        'Content-Type': 'application/json; charset=UTF-8',
-        Authorization: `Bearer ${token}`
-      },
-    });
+    return this.http.post<Flora>(environment.baseUrl + 'flora', flora);
   }
 }

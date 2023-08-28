@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginResponse, OidcSecurityService } from 'angular-auth-oidc-client';
 import { FloraService } from 'src/app/Services/flora.service';
 import { Category } from 'src/app/models/category.model';
 import { Flora } from 'src/app/models/flora.model';
@@ -10,7 +11,7 @@ import { Page } from 'src/app/models/page.model';
   styleUrls: ['./home-page.component.css'],
 })
 export class HomePageComponent implements OnInit {
-  constructor(private _floraService: FloraService) {}
+  constructor(private _floraService: FloraService,private oidcSecurityService: OidcSecurityService) {}
   currentPageIndex: number = 0;
   pageSize: number = 20;
   orderByGenus: boolean = false;
@@ -26,8 +27,13 @@ export class HomePageComponent implements OnInit {
   ];
   page?: Page;
   ngOnInit(): void {
-    this.getFlora();
+    this.oidcSecurityService.checkAuth().subscribe((res:LoginResponse)=>{
+      this.getFlora();
+      console.log(res);
+    })
   }
+
+  
 
   nextPage() {
     if (this.isDisablePrevButton == true) this.isDisablePrevButton = false;

@@ -5,10 +5,12 @@
     </div>
 
     <div class="action_container">
+        <button class="btn search_btn" (click)="authorize()" *ngIf="userData$ | async as user"
+            routerLink="{{user.userData == null ? '/' : 'profile/'+user.userData.name}}"  >
+            {{ user.userData == null ? 'Authorize' : user.userData.name}} </button>
         <div class="search_box">
-              <button class="btn search_btn" ></button>
-            <input type="text" disabled placeholder="Search" class="search_input">
-          
+            <input type="text" placeholder="Search" class="search_input">
+
         </div>
     </div>
 </nav>

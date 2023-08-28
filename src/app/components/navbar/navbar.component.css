@@ -18,7 +18,8 @@ input[type="text"]:disabled {
 }
 
 .action_container {
-    margin-right: 20px;
+    display: flex;
+    gap: 20px;
 }
 
 .btn {
@@ -45,6 +46,7 @@ input[type="text"]:disabled {
 .search_btn {
     background: none;
     color: aliceblue;
+    text-decoration: underline;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
