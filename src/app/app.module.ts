@@ -8,13 +8,14 @@ import { HeaderComponent } from './components/header/header.component';
 import { InfoCardComponent } from './components/info-card/info-card.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { DescriptionPageComponent } from './pages/description-page/description-page.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SummaryPipe } from './pipe/summery.pipe';
 import { CapitalizePipe } from './pipe/capitalize.pipe';
 import { AddFloraComponent } from './pages/add-flora/add-flora.component';
 import { AuthConfigModule } from './auth/auth-config.module';
 import { PhotoUploadPreviewComponent } from './components/photo-upload-preview/photo-upload-preview.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     
   ],
   providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}
+
   ],
   bootstrap: [AppComponent],
   

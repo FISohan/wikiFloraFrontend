@@ -1,14 +1,15 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { AuthInterceptor, AuthModule } from 'angular-auth-oidc-client';
+import { AuthModule } from 'angular-auth-oidc-client';
 import { environment } from 'src/environments/environment';
+import { AuthInterceptor } from './auth.interceptor';
 
 
 @NgModule({
     imports: [AuthModule.forRoot({
         config: {
             authority: 'https://auth.prohelika.net/realms/Test',
-            redirectUrl: window.location.origin,
+            redirectUrl: window.location.origin + '/',
             postLogoutRedirectUri: window.location.origin,
             clientId: 'wiki-flora-frontend',
             // scope: 'openid', // 'openid profile ' + your scopes
@@ -18,10 +19,11 @@ import { environment } from 'src/environments/environment';
             // silentRenewUrl: window.location.origin + '/silent-renew.html',
             renewTimeBeforeTokenExpiresInSeconds: 10,
             secureRoutes: [environment.baseUrl],
+            historyCleanupOff:false,
+
           }
       })],
     exports: [AuthModule],
-    providers:[]
 })
 
 export class AuthConfigModule {}

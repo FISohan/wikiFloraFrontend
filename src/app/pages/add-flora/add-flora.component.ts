@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { FloraService } from 'src/app/Services/flora.service';
 import { PhotoService } from 'src/app/Services/photo.service';
+import { TokenService } from 'src/app/Services/token.service';
 import { Photo } from 'src/app/models/photo.model';
 @Component({
   selector: 'app-add-flora',
@@ -38,7 +39,9 @@ export class AddFloraComponent implements OnInit {
     reference:['reference.com']
   });
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(TokenService.getToken())
+  }
   uploadCoverPhoto(event: any) {
     console.log(event.target.files[0]);
 

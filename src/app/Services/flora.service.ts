@@ -20,6 +20,13 @@ export class FloraService {
     pageSize: number,
     orederByGenus: boolean = false
   ): Observable<Page> {
+    let token;
+    // this.oidcSecurityService.checkAuth().subscribe((l: LoginResponse) => {
+    //   token = l.accessToken;
+    //   console.log(l);
+      
+    // });
+
     return this.http.get<Page>(
       environment.baseUrl +
         `Flora/Get/pageNumber=${pageNumber}&pageSize=${pageSize}&orderByGenus=${orederByGenus}`,
