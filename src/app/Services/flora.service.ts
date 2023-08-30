@@ -36,6 +36,14 @@ export class FloraService {
     return this.http.get<Flora>(environment.baseUrl + `Flora/Get/${name}`);
   }
   postFlora(flora: any): Observable<Flora> {
-    return this.http.post<Flora>(environment.baseUrl + 'flora', flora);
+    return this.http.post<Flora>(environment.baseUrl + 'flora', flora,{headers:{
+      "Content-Type": "application/json, text/plain, */*"
+    }});
+  }
+  approveFlora(id:string){
+
+  }
+  getDisapprovePost():Observable<Flora[]>{
+      return this.http.get<Flora[]>(environment.baseUrl + "flora/disapprove")
   }
 }

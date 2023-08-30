@@ -11,6 +11,14 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
   addUser(user:any):Observable<User>{
-    return this.http.post<User>(environment.baseUrl + "user",user);
+    return this.http.post<User>(environment.baseUrl + "User",user);
+  }
+
+  isUserExist():Observable<boolean>{
+    return this.http.get<boolean>(environment.baseUrl + "User/existed");
+  }
+
+  getUser(userId:string){
+
   }
 }

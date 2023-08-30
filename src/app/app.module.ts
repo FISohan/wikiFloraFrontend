@@ -17,6 +17,7 @@ import { PhotoUploadPreviewComponent } from './components/photo-upload-preview/p
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { ApprovalPageComponent } from './pages/approval-page/approval-page.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
     AddFloraComponent,
     PhotoUploadPreviewComponent,
     ProfileComponent,
+    ApprovalPageComponent,
   ],
   imports: [
     BrowserModule,

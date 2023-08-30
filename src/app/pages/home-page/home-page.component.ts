@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginResponse, OidcSecurityService } from 'angular-auth-oidc-client';
 import { FloraService } from 'src/app/Services/flora.service';
+import { UserService } from 'src/app/Services/user.service';
 import { Category } from 'src/app/models/category.model';
 import { Flora } from 'src/app/models/flora.model';
 import { Page } from 'src/app/models/page.model';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-home-page',
@@ -11,7 +13,7 @@ import { Page } from 'src/app/models/page.model';
   styleUrls: ['./home-page.component.css'],
 })
 export class HomePageComponent implements OnInit {
-  constructor(private _floraService: FloraService,private oidcSecurityService: OidcSecurityService) {}
+  constructor(private _floraService: FloraService, private oidcSecurityService: OidcSecurityService, private userService: UserService) { }
   currentPageIndex: number = 0;
   pageSize: number = 20;
   orderByGenus: boolean = false;
@@ -27,13 +29,23 @@ export class HomePageComponent implements OnInit {
   ];
   page?: Page;
   ngOnInit(): void {
-    this.oidcSecurityService.checkAuth().subscribe((res:LoginResponse)=>{
+    this.oidcSecurityService.checkAuth().subscribe((res: LoginResponse) => {
       this.getFlora();
+      this.userService.isUserExist().subscribe(d =>{
+        if(!d){
+         const user:User = {name : res.userData.name,mail:res.userData.email,userId:res.userData.sub}
+         this.userService.addUser(user).subscribe(d =>{
+          console.log("user added");
+         });
+        }
+        console.log(d);
+        
+      })
       console.log(res);
     })
   }
 
-  
+
 
   nextPage() {
     if (this.isDisablePrevButton == true) this.isDisablePrevButton = false;

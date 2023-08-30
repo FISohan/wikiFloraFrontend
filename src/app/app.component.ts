@@ -22,8 +22,8 @@ export class AppComponent implements OnInit {
     this.oidcSecurityService.logoff().subscribe((d) => console.log(d));
   }
   getToken() {
-    this.oidcSecurityService.checkAuth().subscribe((l:LoginResponse)=>{
-      console.log('BLLLLLLLLLLLLLLLLLLLL', l);
+    this.oidcSecurityService.getPayloadFromAccessToken().subscribe((l)=>{
+      console.log('BLLLLLLLLLLLLLLLLLLLL', l.realm_access.roles);
     })
   }
 

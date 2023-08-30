@@ -17,9 +17,13 @@ export class NavbarComponent implements OnInit {
   
   }
   authorize(){
-    this.oidcSecurityService.isAuthenticated().subscribe(d =>{ this.isLogedIn = d;console.log(d);}) 
+    this.oidcSecurityService.checkAuth().subscribe(d =>{
+        this.isLogedIn = d.isAuthenticated;
+        console.log(11111);
+
+    });
     if(this.isLogedIn)return;
-    console.log(1);
-    this.oidcSecurityService.authorize()
+    this.oidcSecurityService.authorize();
+    
   }
 }
