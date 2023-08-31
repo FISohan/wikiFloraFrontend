@@ -9,6 +9,7 @@ export interface Flora {
     othersName: string;
     description: string;
     contributer: string;
+    contributerName:string;
     scientificName: ScientificName;
     photos: Photo[];
     hierarchy: Hierarchy;

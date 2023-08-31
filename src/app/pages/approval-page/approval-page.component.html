@@ -1,33 +1,41 @@
 <div>
-<table>
-    <thead>
-    <tr>
-        <th>Flora Name</th>
-        <th>Others Name</th>
-        <th>Scientific Name</th>
-        <th>Contributer</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td>Flora Name</td>
-        <td>Others Name</td>
-        <td>Scientific Name</td>
-        <td>Contributer</td>
-    </tr>
-    <tr>
-        <td>Flora Name</td>
-        <td>Others Name</td>
-        <td>Scientific Name</td>
-        <td>Contributer</td>
-    </tr>
-    <tr>
-        <td>Flora Name</td>
-        <td>Others Name</td>
-        <td>Scientific Name</td>
-        <td>Contributer</td>
-    </tr>
-</tbody>
-</table>
-
+    <div class="preview_window" *ngIf="selectedFlora$ | async as selectedFlora">
+        <ul>
+            <h3>Names:</h3>
+            <li>Name: {{selectedFlora.banglaName}}, {{selectedFlora.othersName}} </li>
+            <li>Scientific Name :{{selectedFlora.scientificName.genus}} {{selectedFlora.scientificName.specificEpithet}}
+            </li>
+            <h3>Hierarchy:</h3>
+            <li>Kingdom: {{selectedFlora.hierarchy.kingdom}}</li>
+            <li>Family: {{selectedFlora.hierarchy.family}}</li>
+            <li>Order: {{selectedFlora.hierarchy.order}}</li>
+            <li>Genus: {{selectedFlora.hierarchy.genus}}</li>
+            <li>Species: {{selectedFlora.hierarchy.species}}</li>
+        </ul>
+        <p style="padding: 30px;">
+            Description:: {{selectedFlora.description}}
+        </p>
+        <div *ngFor="let photo of selectedFlora.photos">
+            <img [src]="photo.path" [alt]="">
+        </div>
+        <div class="Action">
+            <button (click)="approve(selectedFlora.id)">Approve</button>
+            <button>Delete</button>
+            <button>Close</button>
+        </div>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Flora Name</th>
+                <th>Contributer</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="disapproveFlora$ | async as disapproveFlora">
+            <tr *ngFor="let flora of disapproveFlora" (click)="showPreview(flora.id)">
+                <td> {{flora.banglaName}} </td>
+                <td>{{flora.contributerName}} </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

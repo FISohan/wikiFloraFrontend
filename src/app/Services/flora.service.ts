@@ -32,18 +32,23 @@ export class FloraService {
         `Flora/Get/pageNumber=${pageNumber}&pageSize=${pageSize}&orderByGenus=${orederByGenus}`,
     );
   }
-  getFloraByName(name?: string): Observable<Flora> {
+  getFloraByName(name: string): Observable<Flora> {
     return this.http.get<Flora>(environment.baseUrl + `Flora/Get/${name}`);
   }
+
+  getFloraById(id: string): Observable<Flora> {
+    return this.http.get<Flora>(environment.baseUrl + `Flora/${id}`);
+  }
+
   postFlora(flora: any): Observable<Flora> {
     return this.http.post<Flora>(environment.baseUrl + 'flora', flora,{headers:{
       "Content-Type": "application/json, text/plain, */*"
     }});
   }
-  approveFlora(id:string){
-
+  approveFlora(id:string):Observable<boolean>{
+    return this.http.put<boolean>(environment.baseUrl + `Flora/aprrove?floraID=${id}`,id);
   }
   getDisapprovePost():Observable<Flora[]>{
-      return this.http.get<Flora[]>(environment.baseUrl + "flora/disapprove")
+      return this.http.get<Flora[]>(environment.baseUrl + "Flora/disapproved")
   }
 }

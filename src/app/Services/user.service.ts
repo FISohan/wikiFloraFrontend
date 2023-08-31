@@ -18,7 +18,7 @@ export class UserService {
     return this.http.get<boolean>(environment.baseUrl + "User/existed");
   }
 
-  getUser(userId:string){
-
+  getUser(userId:string):Observable<User>{
+      return this.http.get<User>(environment.baseUrl + `User/${userId}`)
   }
 }
