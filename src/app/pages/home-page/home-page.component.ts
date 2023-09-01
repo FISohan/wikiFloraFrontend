@@ -32,8 +32,9 @@ export class HomePageComponent implements OnInit {
     this.oidcSecurityService.checkAuth().subscribe((res: LoginResponse) => {
       this.getFlora();
       this.userService.isUserExist().subscribe(d =>{
+        console.log(d);
         if(!d){
-         const user:User = {name : res.userData.name,mail:res.userData.email,userId:res.userData.sub}
+         const user:User = {name : res.userData.preferred_username,mail:res.userData.email,userId:res.userData.sub,givenName:res.userData.name}
          this.userService.addUser(user).subscribe(d =>{
           console.log("user added");
          });

@@ -27,15 +27,19 @@ export class ApprovalPageComponent {
     approve(id:string){
       this.floraService.approveFlora(id).subscribe(d=>{
         if(d){
-          //this.selectedFlora$ = undefined;
-          console.log(d);
-          
+          this.disapproveFlora$ = this.floraService.getDisapprovePost();
+          this.selectedFlora$ = undefined;
         }
       });
     }
     getUser(userId:string):Observable<User>{
-      
-      
       return this.userService.getUser(userId);
+    }
+
+    delete(id : string){
+      return this.floraService.deleteFlora(id).subscribe(d => {
+        if(!d)alert("Not suckess");
+        else {this.disapproveFlora$ = this.floraService.getDisapprovePost(); this.selectedFlora$ = undefined;}
+      })
     }
 }

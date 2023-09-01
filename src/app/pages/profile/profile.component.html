@@ -1,15 +1,18 @@
 <div class="main">
-    <div class="basics_info">
+    <div class="basics_info" *ngIf="userData$ | async as userData">
         <ul>
-            <li>Name:</li>
-            <li>Email:</li>
-            <li>Social Link:</li>
+            <li>Name: {{userData.name}} </li>
+            <li>Email: {{userData.mail}} </li>
+            <li>Social Link:  {{userData.socialLink}} </li>
         </ul>
     </div>
-    <div class="actions">
+    <div class="actions" *ngIf="isAuthorize$ | async as isAuth">
+        <div *ngIf="isAuth.isAuthenticated">
         <button routerLink="/add-flora">Add New</button>
         <button>Update Profile</button>
-        <button>Approve</button>
+        <button routerLink="/approve-flora" >Approve</button>
+        <button (click)="logoff()" >Logoff</button>
+    </div>
     </div>
     <div class="posts">
 

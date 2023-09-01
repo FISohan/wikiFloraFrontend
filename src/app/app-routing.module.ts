@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: "details/:name", component: DescriptionPageComponent },
   { path: 'add-flora', component: AddFloraComponent, data: { permisson: [AuthRole.ADMIN,AuthRole.AUTHORIZE] }, canActivate: [authorizationGuard] },
   { path: 'profile/:name', component: ProfileComponent },
-  { path: 'approve-flora', component: ApprovalPageComponent, data: { permisson: [AuthRole.ADMIN] }, /*canActivate: [authorizationGuard]*/ },
+  { path: 'approve-flora', component: ApprovalPageComponent, data: { permisson: [AuthRole.ADMIN] }, canActivate: [authorizationGuard]},
 ];
 
 @NgModule({

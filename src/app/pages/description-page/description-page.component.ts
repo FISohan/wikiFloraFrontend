@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable, map } from 'rxjs';
 import { FloraService } from 'src/app/Services/flora.service';
 import { Flora } from 'src/app/models/flora.model';
 import { Photo } from 'src/app/models/photo.model';
@@ -10,29 +11,24 @@ import { Photo } from 'src/app/models/photo.model';
   styleUrls: ['./description-page.component.css'],
 })
 export class DescriptionPageComponent implements OnInit {
-  flora!: Flora;
-  coverPhoto?: Photo;
+  flora$!: Observable<Flora>;
+  coverPhoto: Photo | undefined;
   constructor(
     private route: ActivatedRoute,
     private floraService: FloraService
   ) {}
 
   ngOnInit(): void {
-    let name = this.route.snapshot.paramMap?.get('name');
-
-    this.getFloraByName(name!);
+    
+    this.route.params.subscribe(d=>{
+      this.getFloraByName(d['name']);
+    })
+    
   }
 
   getFloraByName(name:string) {
-   // if(name == null)return;
-   console.log(name);
-   
-    this.floraService.getFloraByName(name).subscribe((d) => {
-      this.flora = d;
-   //   this.coverPhoto = d.photos.find((e) => e.isCoverPhoto);
-      console.log(this.coverPhoto);
-      
-    });
-    
+     this.flora$ = this.floraService.getFloraById(name);
+    this.flora$.pipe(map(({ photos }) => photos.find(e => e.isCoverPhoto))).subscribe(d => this.coverPhoto = d);
   }
+
 }

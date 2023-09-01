@@ -1,7 +1,7 @@
 <main>
-  <div class="main_container">
+  <div class="main_container" *ngIf="flora$ | async as flora">
     <div class="feature_image">
-      <img [src]="coverPhoto?.path ?? '/assets/images/header_image.png'" alt="" />
+      <img [src]="coverPhoto?.path" alt="" />
     </div>
     <div class="name_group">
       <div class="grp1">
@@ -32,6 +32,9 @@
       <p>
         {{ flora.description }}
       </p>
+    </div>
+    <div  class="photos">
+        <img *ngFor="let photo of flora.photos" [src]="photo.path" [alt]=" flora.banglaName ">
     </div>
   </div>
 </main>
