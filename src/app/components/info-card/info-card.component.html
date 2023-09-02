@@ -1,4 +1,4 @@
-<div class="card_body" routerLink="details/{{floraInfo.id}}">
+<div class="card_body" routerLink="/details/{{floraInfo.id}}">
     <img [src]="coverPhoto!.path" alt="" class="card_img">
     <h1 class="name">
         {{floraInfo.banglaName}} or {{floraInfo.othersName}}
@@ -12,4 +12,7 @@
     <p class="description">
         {{floraInfo.description | summery:400}} 
     </p>
+</div>
+<div style="text-align: center;">
+    <ng-content></ng-content> 
 </div>

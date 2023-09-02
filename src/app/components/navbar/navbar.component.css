@@ -14,12 +14,12 @@ input[type="text"]:disabled {
   }
 .title {
     margin-left: 10px;
-
 }
 
 .action_container {
+    margin-right: 10px;
     display: flex;
-    gap: 20px;
+    gap: 15px;
 }
 
 .btn {

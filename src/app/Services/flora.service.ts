@@ -48,4 +48,17 @@ export class FloraService {
   deleteFlora(id:string):Observable<boolean>{
     return this.http.delete<boolean>(environment.baseUrl + `Flora/delete/${id}`);
   }
+  getFloraByUser(userId:string):Observable<Flora[]>{
+    return this.http.get<Flora[]>(environment.baseUrl + `Flora/get/byUser?userId=${userId}`)
+  }
+
+  getFloraByUserAuth():Observable<Flora[]>{
+    return this.http.get<Flora[]>(environment.baseUrl + `Flora/get/byUser/auth`)
+  }
+
+  upadateFlora(updatedFlora:any,id:string):Observable<boolean>{
+      return this.http.put<boolean>(environment.baseUrl + `Flora/update/${id}`,updatedFlora,{headers:{
+        "Content-Type": "application/json, text/plain, */*"
+      }});
+  }
 }
