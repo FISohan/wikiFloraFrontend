@@ -69,12 +69,16 @@ export class AddFloraComponent implements OnInit {
     if (this.isUpdate && this.floraId != null) {
       this.floraService.upadateFlora(JSON.stringify(this.floraForm.value),this.floraId).subscribe(d=>{
         if(d)alert("sucksex");
+        console.log(11);
+        
       })
      }
     else {
       this.floraService.postFlora(JSON.stringify(this.floraForm.value)).subscribe(res => {
         this.floraForm.reset();
         this.photos = [];
+        console.log(22);
+        
       })
     }
   }
@@ -111,6 +115,7 @@ export class AddFloraComponent implements OnInit {
       let id: string | undefined = d['id'];
       if (id == undefined) return;
       this.isUpdate = true;
+      this.floraId = id;
       this.floraService.getFloraById(id).subscribe(d => {
 
         this.floraForm.setValue({

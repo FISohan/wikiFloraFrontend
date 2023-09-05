@@ -14,4 +14,5 @@ export interface Flora {
     photos: Photo[];
     hierarchy: Hierarchy;
     reference: string;
+    isApprove:boolean;
 }

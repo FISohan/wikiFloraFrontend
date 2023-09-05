@@ -22,6 +22,7 @@
         <div class="actions" *ngIf="isAuthorize$ | async as isAuth">
             <div *ngIf="isAuth.isAuthenticated">
                 <button routerLink="/update-flora/{{flora.id}}">Update</button>
+                <button disabled [style.background]="flora.isApprove ? 'green' : 'red'"> {{flora.isApprove ? "Approved" : "Pending"}} </button>
             </div>
         </div>
     </app-info-card>
