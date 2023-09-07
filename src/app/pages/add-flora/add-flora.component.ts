@@ -71,15 +71,19 @@ export class AddFloraComponent implements OnInit {
         this.floraForm.get('scientificName')?.get('specificEpithet')?.setValue(scientificName[1]);
     }                               
     this.photos.forEach((el) => {
+      if(el.path != ''){
       this.floraForm.get('photos')!.value.push({
         isCoverPhoto: el.isCoverPhoto,
         path: el.path,
       });
+    }
     });
     //console.log(JSON.stringify(this.floraForm.value))
     if (this.isUpdate && this.floraId != null) {
       this.floraService.upadateFlora(JSON.stringify(this.floraForm.value),this.floraId).subscribe(d=>{
-        this.router.navigate(['/'])
+        console.log(this.floraForm.value);
+        
+       this.router.navigate(['/'])
       })
      }
     else {
@@ -93,7 +97,6 @@ export class AddFloraComponent implements OnInit {
         };
         console.log(22);
         this.router.navigate(['/add-flora'])
-        
       })
     }
   

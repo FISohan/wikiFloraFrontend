@@ -11,7 +11,7 @@
           বৈজ্ঞানিক নাম : {{ flora.scientificName.genus | capitalize }}
           {{ flora.scientificName.specificEpithet }}
         </h3>
-        <h3>Contributer : {{flora.contributer}}</h3>
+        <h3 *ngIf="user$ | async as user" routerLink="/profile/{{user.userId}}" >Contributer : {{user.name}}</h3>
       </div>
       <br />
       <div class="classification_section">

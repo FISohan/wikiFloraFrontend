@@ -35,3 +35,7 @@
     border-bottom: solid 3px #94e735;
     background-color: #ffffff;
 }
+
+*{
+    color: black !important;
+}
