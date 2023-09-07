@@ -3,33 +3,25 @@
 
 <app-photo-upload-preview (remove)="removeCoverPhoto()" [photoSrc]="coverPhoto.path" ></app-photo-upload-preview>
 
-<input type="file" [disabled]="coverPhoto.path == '' ? false : true"  (change)="uploadCoverPhoto($event)" />
+<input type="file" #fileInput [disabled]="coverPhoto.path == '' ? false : true"  (change)="uploadCoverPhoto($event)" />
+
     <div class="name_group">
       <div class="grp1">
-        <label>প্রধান নাম : <input type="text" class="flora_input" formControlName="banglaName" /> </label>
-        <label>অন্যান্য নাম : <input type="text" class="flora_input" formControlName="othersName" /></label>
-        <label
-          >বৈজ্ঞানিক নাম : <input type="text" placeholder="ex: Homo Sapience" [formControl]="scientificname" class="flora_input"
-        /></label>
-        <div formGroupName="hierarchy">
-        <li>
-            <label>Kingdom: <input type="text" formControlName="kingdom" class="flora_input" /> </label>
-          </li>
-          <li>
-            <label>Family: <input type="text"  formControlName="family" class="flora_input" /></label>
-          </li>
-          <li>
+        <label>Main Name:  </label>
+        <input type="text" class="flora_input" formControlName="banglaName" />
+        <label>Other Name:</label>
+        <input type="text" class="flora_input" formControlName="othersName" />
+        <label>scientific Name: </label>
+        <input type="text" placeholder="ex: Homo Sapience" [formControl]="scientificname" class="flora_input"
+        />
+        <form class="grp1" formGroupName="hierarchy">
+            <label>Kingdom:</label><input type="text" formControlName="kingdom" class="flora_input" /> 
+            <label>Family: </label><input type="text"  formControlName="family" class="flora_input" />
             <label>Order: </label> <input type="text" formControlName="order" class="flora_input" />
-          </li>
-          <li>
             <label>Genus: </label> <input type="text" formControlName="genus" class="flora_input" />
-          </li>
-          <li>
             <label>Species: </label> <input type="text" formControlName="species" class="flora_input" />
-          </li>
+          </form>
         </div>
-      </div>
-
       </div>
     <br />
     <h3>বর্ননা:</h3>
@@ -44,8 +36,10 @@
     <div class="photoGroup">
       <app-photo-upload-preview *ngFor="let photo of photos;let indexOfEl = index"  [photoSrc]="photo.path" (remove)="removeAt(indexOfEl)">
       </app-photo-upload-preview>
-      <input type="file" multiple (change)="uploadPhotos($event)">
+      <br>
+      <input #fileInput type="file" multiple (change)="uploadPhotos($event)">
     </div>
+    <br>
     <h3>Reference:</h3>
     <textarea
       name=""
@@ -55,6 +49,7 @@
       formControlName="reference"
       style="width: 90%; height: 100px"
     ></textarea>
+    <br>
     <button (click)="submit()">Submit</button>
   </form>
 </main>

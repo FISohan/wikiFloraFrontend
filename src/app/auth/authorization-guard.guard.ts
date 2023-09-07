@@ -1,5 +1,5 @@
 import { inject } from '@angular/core';
-import { CanActivateFn } from '@angular/router';
+import { CanActivateFn, Router } from '@angular/router';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { map, take } from 'rxjs';
 import { AuthRole } from '../models/auth-role.enum';
@@ -30,7 +30,7 @@ export const authorizationGuard: CanActivateFn = (route, state) => {
     }
   }
 
-  console.log(verified);
+  if(!verified)oidcSecurityService.authorize();
 
   return verified;
 };

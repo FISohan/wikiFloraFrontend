@@ -13,7 +13,6 @@ main {
 }
 
 
-
 h3 {
     font-weight: 400;
 }
@@ -35,7 +34,7 @@ h3 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     
 }
 input{
@@ -47,7 +46,7 @@ li{
 .grp1{
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
 }
 textarea{
     font-size: large;
@@ -55,15 +54,15 @@ textarea{
 }
 .flora_input{
     margin-bottom: 8px;
-    width: 240px;
+    width: 220px;
     font-size: medium;
-    height: 50px;
+    height: 45px;
     font-family: initial;
 }
 
 @media screen and (max-width: 600px) {
     .main_container {
-        width: 95vw;
+        width: 100vw;
     }
 /* 
     .name_group {

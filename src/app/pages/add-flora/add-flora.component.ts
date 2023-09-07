@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { FloraService } from 'src/app/Services/flora.service';
 import { PhotoService } from 'src/app/Services/photo.service';
 import { TokenService } from 'src/app/Services/token.service';
@@ -14,7 +15,8 @@ export class AddFloraComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private photoService: PhotoService,
     private floraService: FloraService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router : Router
   ) { }
 
   scientificname = new FormControl('');
@@ -46,7 +48,11 @@ export class AddFloraComponent implements OnInit {
     reference: ['']
   });
 
+  @ViewChild("fileInput", { static: false })
+  fileInput!: ElementRef;
+
   ngOnInit(): void {
+    
     this.initForm()
   }
   uploadCoverPhoto(event: any) {
@@ -59,6 +65,11 @@ export class AddFloraComponent implements OnInit {
   submit() {
     this.floraForm.get('photos')!.reset();
     this.photos.push(this.coverPhoto);
+    let scientificName = this.scientificname.value?.split(' ');
+    if(scientificName){
+        this.floraForm.get('scientificName')?.get('genus')?.setValue(scientificName[0]);
+        this.floraForm.get('scientificName')?.get('specificEpithet')?.setValue(scientificName[1]);
+    }                               
     this.photos.forEach((el) => {
       this.floraForm.get('photos')!.value.push({
         isCoverPhoto: el.isCoverPhoto,
@@ -68,19 +79,24 @@ export class AddFloraComponent implements OnInit {
     //console.log(JSON.stringify(this.floraForm.value))
     if (this.isUpdate && this.floraId != null) {
       this.floraService.upadateFlora(JSON.stringify(this.floraForm.value),this.floraId).subscribe(d=>{
-        if(d)alert("sucksex");
-        console.log(11);
-        
+        this.router.navigate(['/'])
       })
      }
     else {
       this.floraService.postFlora(JSON.stringify(this.floraForm.value)).subscribe(res => {
         this.floraForm.reset();
+        this.scientificname.reset();
         this.photos = [];
+        this.coverPhoto = {
+          isCoverPhoto: true,
+          path: '',
+        };
         console.log(22);
+        this.router.navigate(['/add-flora'])
         
       })
     }
+  
   }
 
   async uploadPhotos(event: any) {
@@ -103,11 +119,13 @@ export class AddFloraComponent implements OnInit {
       console.log(res);
       this.photos.splice(index, 1);
     });
+    this.fileInput.nativeElement.value = '';
   }
   removeCoverPhoto() {
     this.photoService
       .remove(this.coverPhoto.path);
     this.coverPhoto.path = '';
+    this.fileInput.nativeElement.value = '';
   }
 
   initForm() {
@@ -118,6 +136,7 @@ export class AddFloraComponent implements OnInit {
       this.floraId = id;
       this.floraService.getFloraById(id).subscribe(d => {
 
+        this.scientificname.setValue(d.scientificName.genus + " " + d.scientificName.specificEpithet);
         this.floraForm.setValue({
           banglaName: d.banglaName,
           contributer: d.contributer,

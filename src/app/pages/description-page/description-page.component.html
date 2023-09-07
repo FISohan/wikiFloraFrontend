@@ -33,6 +33,9 @@
         {{ flora.description }}
       </p>
     </div>
+    <h2>
+      Photos:
+    </h2>
     <div  class="photos">
         <img *ngFor="let photo of flora.photos" [src]="photo.path" [alt]=" flora.banglaName ">
     </div>

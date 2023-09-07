@@ -21,7 +21,6 @@ tr,td{
 
 div{
     height: auto;
-    width: 100vw;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -29,8 +28,14 @@ div{
 }
 
 .preview_window{
-    background-color: red;
-    width: 95%;
+    top: 0px;
+    width: 100%;
+    background-color: rgb(223, 223, 223);
     height: auto;
     position: absolute;
+}
+
+.action > button{
+    padding: 5px 25px;
+    margin-bottom: 5px;
 }

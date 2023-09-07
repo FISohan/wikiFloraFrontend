@@ -35,7 +35,9 @@ export class ApprovalPageComponent {
     getUser(userId:string):Observable<User>{
       return this.userService.getUser(userId);
     }
-
+close(){
+  this.selectedFlora$ = undefined;
+}
     delete(id : string){
       return this.floraService.deleteFlora(id).subscribe(d => {
         if(!d)alert("Not suckess");
