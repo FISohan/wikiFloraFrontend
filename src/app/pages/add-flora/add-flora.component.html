@@ -12,8 +12,9 @@
         <label>Other Name:</label>
         <input type="text" class="flora_input" formControlName="othersName" />
         <label>scientific Name: </label>
-        <input type="text" placeholder="ex: Homo Sapience" [formControl]="scientificname" class="flora_input"
+        <input type="text" placeholder="ex: Homo Sapience" [formControl]="scientificname" (focusout)="checkIsExist()" class="flora_input"
         />
+        <span *ngIf="isExist" > {{isExist ? 'Flora already exist' : ''}} </span>
         <form class="grp1" formGroupName="hierarchy">
             <label>Kingdom:</label><input type="text" formControlName="kingdom" class="flora_input" /> 
             <label>Family: </label><input type="text"  formControlName="family" class="flora_input" />

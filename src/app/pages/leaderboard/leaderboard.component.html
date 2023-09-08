@@ -1,0 +1,22 @@
+<body>
+    
+<table>
+    <thead>
+        <tr>
+        <th>Position</th>
+        <th>Name</th>
+        <th>Contribution</th>
+        <th>Badge</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="users$ | async as users">
+        <tr *ngFor="let user of users;let i = index">
+            <td> {{i}} </td>
+            <td> {{user.givenName}} </td>
+            <td> {{ user.contributionPoints }} </td>
+            <td> {{user.contributionPoints | badge}} </td>
+        </tr>
+    </tbody>
+</table>
+
+</body>

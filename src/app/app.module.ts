@@ -18,6 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ApprovalPageComponent } from './pages/approval-page/approval-page.component';
+import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component';
+import { BadgePipe } from './pipe/badge.pipe';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { ApprovalPageComponent } from './pages/approval-page/approval-page.compo
     PhotoUploadPreviewComponent,
     ProfileComponent,
     ApprovalPageComponent,
+    LeaderboardComponent,
+    BadgePipe,
   ],
   imports: [
     BrowserModule,

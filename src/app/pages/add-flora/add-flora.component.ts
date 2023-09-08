@@ -27,6 +27,7 @@ export class AddFloraComponent implements OnInit {
   photos: Photo[] = [];
   isUpdate: boolean = false;
   floraId?:string;
+  isExist!:boolean;
   floraForm = this.fb.group({
     banglaName: [''],
     othersName: [''],
@@ -165,5 +166,13 @@ export class AddFloraComponent implements OnInit {
       });
 
     })
+  }
+
+  checkIsExist(){
+    let n = this.scientificname.value?.split(' ');
+    if(n != undefined)
+      this.floraService.isExistFlora(n[1]).subscribe(d =>{
+          this.isExist = d.isExist;
+      });
   }
 }

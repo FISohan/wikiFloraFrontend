@@ -4,5 +4,6 @@ export interface User {
     name:string;
     givenName:string;
     mail:string,
-    socialLink?:string
+    socialLink?:string,
+    contributionPoints?:string
 }

@@ -15,7 +15,7 @@ import { User } from 'src/app/models/user';
 export class HomePageComponent implements OnInit {
   constructor(private _floraService: FloraService, private oidcSecurityService: OidcSecurityService, private userService: UserService) { }
   currentPageIndex: number = 0;
-  pageSize: number = 20;
+  pageSize: number = 2;
   orderByGenus: boolean = false;
 
   isDisableNextButton: boolean = false;
@@ -31,18 +31,20 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     this.oidcSecurityService.checkAuth().subscribe((res: LoginResponse) => {
       this.getFlora();
-      this.userService.isUserExist().subscribe(d =>{
-        console.log(d);
-        if(!d){
-         const user:User = {name : res.userData.preferred_username,mail:res.userData.email,userId:res.userData.sub,givenName:res.userData.name}
-         this.userService.addUser(user).subscribe(d =>{
-          console.log("user added");
-         });
+      this.userService.isUserExist().subscribe(d => {
+        if (!d) {
+          const user: User = { 
+             name: res.userData.preferred_username,
+             mail: res.userData.email,
+             userId: res.userData.sub,
+             givenName: res.userData.name
+             }
+
+          this.userService.addUser(user).subscribe(d => {
+            console.log("user added");
+          });
         }
-        console.log(d);
-        
       })
-      console.log(res);
     })
   }
 

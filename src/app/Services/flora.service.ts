@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Flora } from '../models/flora.model';
 import { Page } from '../models/page.model';
 import { LoginResponse, OidcSecurityService } from 'angular-auth-oidc-client';
+import { Exist } from '../models/exist.model';
 
 @Injectable({
   providedIn: 'root',
@@ -60,5 +61,9 @@ export class FloraService {
       return this.http.put<boolean>(environment.baseUrl + `Flora/update/${id}`,updatedFlora,{headers:{
         "Content-Type": "application/json, text/plain, */*"
       }});
+  }
+
+  isExistFlora(name:string):Observable<Exist>{
+    return this.http.get<Exist>(environment.baseUrl + `flora/get/isExist?name=${name}`);
   }
 }

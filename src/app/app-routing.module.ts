@@ -7,6 +7,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { AuthRole } from './models/auth-role.enum';
 import { authorizationGuard } from './auth/authorization-guard.guard';
 import { ApprovalPageComponent } from './pages/approval-page/approval-page.component';
+import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomePageComponent },
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'add-flora', component: AddFloraComponent, data: { permisson: [AuthRole.ADMIN, AuthRole.AUTHORIZE] }, canActivate: [authorizationGuard] },
   { path: 'profile/:name', component: ProfileComponent },
   { path: 'approve-flora', component: ApprovalPageComponent, data: { permisson: [AuthRole.ADMIN] }, canActivate: [authorizationGuard] },
-  { path: 'update-flora/:id', component: AddFloraComponent, data: { permisson: [AuthRole.ADMIN, AuthRole.AUTHORIZE] }, canActivate: [authorizationGuard] }
+  { path: 'update-flora/:id', component: AddFloraComponent, data: { permisson: [AuthRole.ADMIN, AuthRole.AUTHORIZE] }, canActivate: [authorizationGuard] },
+  {path:'leaderboard',component:LeaderboardComponent}
 ];
 
 @NgModule({
