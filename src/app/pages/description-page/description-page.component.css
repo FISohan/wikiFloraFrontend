@@ -62,3 +62,28 @@ img {
     }
 
 }
+
+textarea{
+    height: 60px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+    outline: none;
+    font-size: 18px;
+    padding: 3px;
+}
+.comment{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.comment > button{
+    margin-top: 3px;
+    padding: 3px 15px;
+    color: white;
+    border: none;
+    border: 1px solid white;
+    background-color: black;
+}

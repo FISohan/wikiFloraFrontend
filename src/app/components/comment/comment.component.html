@@ -1,0 +1,16 @@
+<div class="comment_body">
+    <span class="author"> {{ getUserName(comment.userId) }} </span>
+    <p class="comment_text">{{comment.commentBody}} </p>
+    <div class="reply_body">
+        <div *ngFor="let reply of comment.replies" class="reply">
+            <span class="author"> {{ getUserName(reply.replyerId) }} </span>
+            <p> {{ reply.replyBody }}</p>
+        </div>
+        <div class="reply_input" *ngIf="doReply">
+            <textarea type="text" #replyBody></textarea>
+            <button class="reply_button" (click)="reply(replyBody.value,comment.id)" >Reply</button>
+        </div>
+        <button (click)="toggleReply()" *ngIf="!doReply" style="background: none;
+        color: white; border: none; margin-top: 5px; font-size: 15px;text-decoration: underline;">Replay</button>
+    </div>
+</div>

@@ -20,6 +20,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ApprovalPageComponent } from './pages/approval-page/approval-page.component';
 import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component';
 import { BadgePipe } from './pipe/badge.pipe';
+import { CommentComponent } from './components/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { BadgePipe } from './pipe/badge.pipe';
     ApprovalPageComponent,
     LeaderboardComponent,
     BadgePipe,
+    CommentComponent,
   ],
   imports: [
     BrowserModule,
