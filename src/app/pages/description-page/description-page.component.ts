@@ -19,7 +19,7 @@ export class DescriptionPageComponent implements OnInit {
   coverPhoto: Photo | undefined;
   user$!:Observable<User>;
   floraId!:string;
-  comments$!:Observable<Comment[]>;
+  comments!:Comment[];
   constructor(
     private route: ActivatedRoute,
     private floraService: FloraService,
@@ -32,18 +32,29 @@ export class DescriptionPageComponent implements OnInit {
     this.route.params.subscribe(d=>{
       this.getFloraByName(d['name']);
       this.floraId = d['name'];
-      this.comments$ = this.commentService.getComment(this.floraId);
+      this.getAllComment();      
     })
     
   }
+
+  getAllComment(){
+    this.commentService.getComment(this.floraId).subscribe(d =>{      
+      this.comments = d;
+    })
+  }
+
   comment(commentBody:string){
     let cmt = {
       floraId: this.floraId,
-      commentBody: commentBody
+      commentBody: commentBody,
+      userId:""
     }
     this.commentService.addComment(JSON.stringify(cmt)).subscribe(d =>{
-      console.log(d);
+       this.getAllComment();
     })
+  }
+  onReply(){
+    this.getAllComment();
   }
   getFloraByName(name:string) {
      this.flora$ = this.floraService.getFloraById(name);

@@ -20,6 +20,8 @@ export class CommentService {
   }
 
   reply(reply:any):Observable<boolean>{
-    return this.http.post<boolean>(environment.baseUrl + "/Comment/reply",reply)
+    return this.http.post<boolean>(environment.baseUrl + "Comment/reply",reply,{headers:{
+      "Content-Type": "application/json, text/plain, */*"
+    }})
   }
 }

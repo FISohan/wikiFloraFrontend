@@ -21,6 +21,7 @@ import { ApprovalPageComponent } from './pages/approval-page/approval-page.compo
 import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component';
 import { BadgePipe } from './pipe/badge.pipe';
 import { CommentComponent } from './components/comment/comment.component';
+import { UserNamePipe } from './pipe/user-name.pipe';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { CommentComponent } from './components/comment/comment.component';
     LeaderboardComponent,
     BadgePipe,
     CommentComponent,
+    UserNamePipe,
   ],
   imports: [
     BrowserModule,

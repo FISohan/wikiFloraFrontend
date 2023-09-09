@@ -4,7 +4,6 @@ body,*{
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
-    font-family: 'Akhand' , 'Milonga';
     
 }
 
@@ -17,10 +16,6 @@ body{
     background-color: black;
 }
 
-@font-face {
-    font-family:Akhand;
-    src: url("/assets/fonts/AkhandBengali-BLack.otf") format("truetype");
-}
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

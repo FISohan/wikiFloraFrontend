@@ -39,14 +39,15 @@
     <div  class="photos">
         <img *ngFor="let photo of flora.photos" [src]="photo.path" [alt]=" flora.banglaName ">
     </div>
+    <h2>Comments:</h2>
+    <br>
+    <div>
+          <app-comment *ngFor="let comment of comments" [comment]="comment" (onReply)="onReply()" ></app-comment>
+    </div>
     <div class="comment">
       <br>
         <textarea #commentBody ></textarea>
         <button (click)="comment(commentBody.value)" >Comment</button>
-    </div>
-    <div *ngIf="comments$ | async as comments">
-          <app-comment *ngFor="let comment of comments" [comment]="comment" ></app-comment>
-
     </div>
   </div>
 </main>

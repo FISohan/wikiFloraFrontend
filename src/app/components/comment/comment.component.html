@@ -1,16 +1,23 @@
 <div class="comment_body">
-    <span class="author"> {{ getUserName(comment.userId) }} </span>
-    <p class="comment_text">{{comment.commentBody}} </p>
+    <div class="comment">
+        <span class="author"> {{ comment.userId === null ? ('Anonymous') : (comment.userId | userName | async)}} </span>
+        <p class="comment_text">{{comment.commentBody}} </p>
+    </div>
+    <span style="font-size: 0.7rem;"> {{comment.createdDate | date }} </span>
+    <button (click)="toggleReply()" style="background: none;
+    color: white; border: none; margin-top: 5px; font-size: 0.7rem;text-decoration: underline;"> {{ !doReply ? 'Reply' : 'Cancle'}}</button>
+    </div>
     <div class="reply_body">
-        <div *ngFor="let reply of comment.replies" class="reply">
-            <span class="author"> {{ getUserName(reply.replyerId) }} </span>
+        <div *ngFor="let reply of comment.replies" class="reply comment">
+            <span></span>
+            <span class="author"> {{ comment.userId === null ? ('Anonymous') : (comment.userId | userName | async)}}
+            </span>
             <p> {{ reply.replyBody }}</p>
         </div>
+
         <div class="reply_input" *ngIf="doReply">
             <textarea type="text" #replyBody></textarea>
-            <button class="reply_button" (click)="reply(replyBody.value,comment.id)" >Reply</button>
+            <button class="reply_button" (click)="reply(replyBody.value,comment.id)">Reply</button>
         </div>
-        <button (click)="toggleReply()" *ngIf="!doReply" style="background: none;
-        color: white; border: none; margin-top: 5px; font-size: 15px;text-decoration: underline;">Replay</button>
+       
     </div>
-</div>
