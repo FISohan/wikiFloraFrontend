@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, map } from 'rxjs';
+import { AuthRole } from 'src/app/Services/auth-role.service';
 import { CommentService } from 'src/app/Services/comment.service';
 import { FloraService } from 'src/app/Services/flora.service';
 import { UserService } from 'src/app/Services/user.service';
@@ -24,11 +25,15 @@ export class DescriptionPageComponent implements OnInit {
     private route: ActivatedRoute,
     private floraService: FloraService,
     private userService: UserService,
-    private commentService:CommentService
+    private commentService:CommentService,
+    private authRoleService:AuthRole
   ) {}
 
   ngOnInit(): void {
     
+    console.log(this.authRoleService.isAuthByAdmin());
+    
+
     this.route.params.subscribe(d=>{
       this.getFloraByName(d['name']);
       this.floraId = d['name'];

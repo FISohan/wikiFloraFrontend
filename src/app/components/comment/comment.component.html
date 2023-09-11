@@ -5,14 +5,20 @@
     </div>
     <span style="font-size: 0.7rem;"> {{comment.createdDate | date }} </span>
     <button (click)="toggleReply()" style="background: none;
-    color: white; border: none; margin-top: 5px; font-size: 0.7rem;text-decoration: underline;"> {{ !doReply ? 'Reply' : 'Cancle'}}</button>
+    color: white; border: none; margin-top: 5px; font-size: 0.7rem;text-decoration: underline;margin-right: 3px;"> {{ !doReply ? 'Reply' : 'Cancle'}}</button>
+        <button (click)="deleteComment(comment.id)" *ngIf="isAdmin" style="background: none;
+        color: white; border: none; margin-top: 5px; font-size: 0.7rem;text-decoration: underline;">Delete</button>
     </div>
     <div class="reply_body">
-        <div *ngFor="let reply of comment.replies" class="reply comment">
-            <span></span>
-            <span class="author"> {{ comment.userId === null ? ('Anonymous') : (comment.userId | userName | async)}}
+        <div *ngFor="let reply of comment.replies" class="reply">
+            <div class="comment">
+            <span class="author"> {{ reply.replyerId === null ? ('Anonymous') : (reply.replyerId | userName | async)}}
             </span>
             <p> {{ reply.replyBody }}</p>
+        </div>
+        <span style="font-size: 0.7rem;"> {{reply.createdDate | date }} </span>
+            <button (click)="deleteReply(reply.id)" *ngIf="isAdmin" style="background: none;
+            color: white; border: none;font-size: 0.7rem;text-decoration: underline;margin-bottom: 10px;">Delete</button>
         </div>
 
         <div class="reply_input" *ngIf="doReply">

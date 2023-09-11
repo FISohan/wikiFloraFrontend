@@ -1,10 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { FloraService } from 'src/app/Services/flora.service';
 import { PhotoService } from 'src/app/Services/photo.service';
-import { TokenService } from 'src/app/Services/token.service';
 import { Photo } from 'src/app/models/photo.model';
 @Component({
   selector: 'app-add-flora',

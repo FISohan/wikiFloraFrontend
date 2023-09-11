@@ -3,7 +3,6 @@ import { LoginResponse, OidcSecurityService } from 'angular-auth-oidc-client';
 import { FloraService } from 'src/app/Services/flora.service';
 import { UserService } from 'src/app/Services/user.service';
 import { Category } from 'src/app/models/category.model';
-import { Flora } from 'src/app/models/flora.model';
 import { Page } from 'src/app/models/page.model';
 import { User } from 'src/app/models/user';
 

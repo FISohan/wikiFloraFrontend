@@ -1,16 +1,24 @@
 <div class="main">
     <div class="basics_info" *ngIf="userData$ | async as userData">
-        <ul>
-            <li>Name: {{userData.name}} </li>
-            <li>Email: {{userData.mail}} </li>
-            <li>Contribution: {{userData.contributionPoints}} </li>
-            <li>Social Link: {{userData.socialLink}} </li>
+        <ul >
+            <div *ngIf="!isUpdate">
+                <li>Name: {{userData.givenName}} </li>
+                <li>Email: {{userData.mail}} </li>
+                <li>Contribution: {{userData.contributionPoints}} </li>
+                <li>Social Link: {{userData.socialLink}} </li>
+            </div>
+            <div [formGroup] ="profileForm" *ngIf="isUpdate" class="update_" >
+                <label for="">Name: </label><input formControlName="givenName" type="text" >
+                <label for="">Email: </label> <input type="text" formControlName="mail" > 
+                <label for=""> Social Link: </label><textarea formControlName="socialLink"></textarea> 
+                <button (click)="updateProfile()" >Update</button>
+            </div>
         </ul>
     </div>
     <div class="actions" *ngIf="isAuthorize$ | async as isAuth">
         <div *ngIf="isAuth.isAuthenticated">
             <button routerLink="/add-flora">Add New</button>
-            <button>Update Profile</button>
+            <button (click)="toggleUpdate()" >Update Profile</button>
             <button routerLink="/approve-flora">Approve</button>
             <button (click)="logoff()">Logoff</button>
         </div>
@@ -23,7 +31,8 @@
         <div class="actions" *ngIf="isAuthorize$ | async as isAuth">
             <div *ngIf="isAuth.isAuthenticated">
                 <button routerLink="/update-flora/{{flora.id}}">Update</button>
-                <button disabled [style.background]="flora.isApprove ? 'green' : 'red'"> {{flora.isApprove ? "Approved" : "Pending"}} </button>
+                <button disabled [style.background]="flora.isApprove ? '#7aff51' : 'red'"> {{flora.isApprove ?
+                    "Approved" : "Pending"}} </button>
             </div>
         </div>
     </app-info-card>

@@ -24,4 +24,9 @@ export class UserService {
   getTopContibuter():Observable<User[]>{
     return this.http.get<User[]>(environment.baseUrl+"user/topContributer");
   }
+  updateUser(updatedUser:any):Observable<boolean>{
+    return this.http.put<boolean>(environment.baseUrl+"user/update",updatedUser,{headers:{
+      "Content-Type": "application/json, text/plain, */*"
+    }});
+}
 }

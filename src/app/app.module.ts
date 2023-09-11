@@ -22,6 +22,7 @@ import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component'
 import { BadgePipe } from './pipe/badge.pipe';
 import { CommentComponent } from './components/comment/comment.component';
 import { UserNamePipe } from './pipe/user-name.pipe';
+import { StartPageComponent } from './pages/start-page/start-page.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { UserNamePipe } from './pipe/user-name.pipe';
     BadgePipe,
     CommentComponent,
     UserNamePipe,
+    StartPageComponent,
   ],
   imports: [
     BrowserModule,

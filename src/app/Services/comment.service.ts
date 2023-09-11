@@ -24,4 +24,13 @@ export class CommentService {
       "Content-Type": "application/json, text/plain, */*"
     }})
   }
+
+  deleteComment(id:string):Observable<boolean>{
+    return this.http.delete<boolean>(environment.baseUrl+`Comment?commentId=${id}`);
+  }
+
+  deleteReply(id:string):Observable<boolean>{
+    return this.http.delete<boolean>(environment.baseUrl + `Comment/reply/delete?replyId=${id}`);
+  }
+  
 }
