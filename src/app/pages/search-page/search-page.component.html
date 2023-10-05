@@ -1,0 +1,11 @@
+<div class="search_box">
+    <input type="search" #serchInput (search)="search(serchInput.value)" placeholder="Search">
+</div>
+
+<section class="data_table">
+    <app-info-card
+      *ngFor="let flora of serchResult"
+      [floraInfo]="flora"
+    >
+  </app-info-card>
+  </section>

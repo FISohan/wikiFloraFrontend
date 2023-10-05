@@ -23,7 +23,7 @@ export class FloraService {
   ): Observable<Page> {
     return this.http.get<Page>(
       environment.baseUrl +
-        `Flora/Get/pageNumber=${pageNumber}&pageSize=${pageSize}&orderByGenus=${orederByGenus}`,
+        `Flora/Get/pageNumber=${pageNumber}&pageSize=${pageSize}`,
     );
   }
   getFloraByName(name: string): Observable<Flora> {

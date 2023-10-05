@@ -1,0 +1,22 @@
+.search_box{
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;    
+}
+*{
+    color: white;
+}
+
+.data_table{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    scroll-padding: 100px;
+}
+input{
+    height: 60px;
+    color: black;
+    padding: 5px;
+    width: 200px;
+}

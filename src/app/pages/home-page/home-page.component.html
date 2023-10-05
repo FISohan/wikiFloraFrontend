@@ -1,9 +1,8 @@
 <app-header></app-header>
 <br />
-<!-- <div class="category_box">
-    <button (click)="onClickCategory(i)" style="border-bottom-color:{{category.active ? '#fffb28' : 'transparent'}}"
-        *ngFor="let category of categories;let i = index"> {{category.name}} </button>
-</div> -->
+ <div class="category_box">
+    <button routerLink="/search"> Search </button>
+</div> 
 
 <section class="data_table" id="data_table_section">
   <app-info-card

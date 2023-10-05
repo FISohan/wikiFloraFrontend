@@ -23,6 +23,7 @@ import { BadgePipe } from './pipe/badge.pipe';
 import { CommentComponent } from './components/comment/comment.component';
 import { UserNamePipe } from './pipe/user-name.pipe';
 import { StartPageComponent } from './pages/start-page/start-page.component';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { StartPageComponent } from './pages/start-page/start-page.component';
     CommentComponent,
     UserNamePipe,
     StartPageComponent,
+    SearchPageComponent
   ],
   imports: [
     BrowserModule,
