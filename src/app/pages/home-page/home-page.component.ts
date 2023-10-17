@@ -16,38 +16,35 @@ export class HomePageComponent implements OnInit {
   currentPageIndex: number = 0;
   pageSize: number = 2;
   orderByGenus: boolean = false;
-
+  isShowTerm : boolean = false;
   isDisableNextButton: boolean = false;
   isDisablePrevButton: boolean = true;
-
-  categories: Category[] = [
-    { name: 'All', active: true },
-    { name: 'category', active: false },
-    { name: 'category', active: false },
-    { name: 'category', active: false },
-  ];
+  user!:User;
   page?: Page;
   ngOnInit(): void {
     this.oidcSecurityService.checkAuth().subscribe((res: LoginResponse) => {
       this.getFlora();
       this.userService.isUserExist().subscribe(d => {
         if (!d) {
-          const user: User = { 
+           this.user = { 
              name: res.userData.preferred_username,
              mail: res.userData.email,
              userId: res.userData.sub,
              givenName: res.userData.name
              }
 
-          this.userService.addUser(user).subscribe(d => {
-            console.log("user added");
-          });
+            this.isShowTerm = true;
         }
       })
     })
   }
 
-
+addUser(){
+  this.userService.addUser(this.user).subscribe(d => {
+    console.log("user added");
+    this.isShowTerm = false;
+  });
+}
 
   nextPage() {
     if (this.isDisablePrevButton == true) this.isDisablePrevButton = false;
@@ -82,9 +79,5 @@ export class HomePageComponent implements OnInit {
         }
       });
   }
-  onClickCategory(index: number) {
-    for (let i = 0; i < this.categories.length; i++)
-      if (index != i) this.categories[i].active = false;
-    this.categories[index].active = true;
-  }
+
 }
