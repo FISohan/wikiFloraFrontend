@@ -1,4 +1,5 @@
 <div class="preview_window" *ngIf="selectedFlora$ | async as selectedFlora">
+    <br>
     <ul>
         <h3>Names:</h3>
         <li>Name: {{selectedFlora.banglaName}}, {{selectedFlora.othersName}} </li>
@@ -11,11 +12,11 @@
         <li>Genus: {{selectedFlora.hierarchy.genus}}</li>
         <li>Species: {{selectedFlora.hierarchy.species}}</li>
     </ul>
-    <p style="padding: 30px;">
+    <p style="padding: 5%;">
         Description:: {{selectedFlora.description}}
     </p>
     <div *ngFor="let photo of selectedFlora.photos">
-        <img [src]="photo.path" [alt]="" style="width: 95%;">
+        <img [src]="photo.path" [alt]="" style="width: 95%;margin-bottom: 10px;">
         <span> {{photo.isCoverPhoto ? "Cover Photo" : ''}} </span>
     </div>
     <br>
